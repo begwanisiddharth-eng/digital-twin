@@ -1,3 +1,5 @@
+import { ChatWidget } from "@/components/chat-widget";
+import { OpenChatButton } from "@/components/open-chat-button";
 import { Section } from "@/components/section";
 import { SiteHeader } from "@/components/site-header";
 import { resume } from "@/lib/resume-data";
@@ -60,6 +62,7 @@ function Hero() {
           >
             {resume.contact.phone}
           </a>
+          <OpenChatButton className="rounded-full border border-[#f1d9a6]/60 px-5 py-2.5 font-semibold text-[#f1d9a6] transition-colors hover:bg-white/10" />
         </div>
       </div>
 
@@ -424,6 +427,7 @@ export default function Home() {
         <EducationSection />
       </main>
       <Footer />
+      <ChatWidget />
     </>
   );
 }
