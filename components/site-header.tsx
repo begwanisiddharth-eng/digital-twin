@@ -11,17 +11,17 @@ export const navItems = [
 
 export function SiteHeader() {
   return (
-    <header className="sticky top-0 z-30 border-b border-line/80 bg-background/90 backdrop-blur">
+    <header className="sticky top-0 z-30 border-b border-white/10 bg-night/85 text-white backdrop-blur-xl">
       <a
         href="#main"
-        className="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-3 focus:rounded focus:bg-accent-dark focus:px-3 focus:py-2 focus:text-white"
+        className="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-3 focus:rounded focus:bg-marigold focus:px-3 focus:py-2 focus:text-night"
       >
         Skip to content
       </a>
       <div className="mx-auto flex h-16 max-w-6xl items-center justify-between gap-4 px-5 sm:px-8">
         <a
           href="#top"
-          className="font-serif text-lg font-semibold text-ink hover:text-accent"
+          className="font-display text-lg font-bold tracking-tight text-white hover:text-marigold"
         >
           {resume.name}
         </a>
@@ -31,7 +31,7 @@ export function SiteHeader() {
               <li key={item.href}>
                 <a
                   href={item.href}
-                  className="rounded-md px-3 py-2 text-muted transition-colors hover:bg-accent-soft hover:text-accent-dark"
+                  className="rounded-full px-3.5 py-2 text-white/75 transition-colors hover:bg-white/10 hover:text-white"
                 >
                   {item.label}
                 </a>
@@ -41,18 +41,18 @@ export function SiteHeader() {
         </nav>
         <a
           href={`mailto:${resume.contact.email}`}
-          className="rounded-full bg-accent-dark px-4 py-2 text-sm font-semibold text-white transition-colors hover:bg-accent"
+          className="rounded-full bg-white px-4 py-2 text-sm font-semibold text-night transition-colors hover:bg-marigold"
         >
           Get in touch
         </a>
       </div>
-      <nav aria-label="Sections" className="border-t border-line/80 lg:hidden">
+      <nav aria-label="Sections" className="border-t border-white/10 lg:hidden">
         <ul className="mx-auto flex max-w-6xl gap-1 overflow-x-auto px-3 py-1.5 text-[0.95rem] [scrollbar-width:none] sm:px-6">
           {navItems.map((item) => (
             <li key={item.href} className="shrink-0">
               <a
                 href={item.href}
-                className="block rounded-md px-3 py-1.5 text-muted hover:bg-accent-soft hover:text-accent-dark"
+                className="block rounded-full px-3 py-1.5 text-white/75 hover:bg-white/10 hover:text-white"
               >
                 {item.label}
               </a>

@@ -1,86 +1,8 @@
 import { ChatWidget } from "@/components/chat-widget";
-import { OpenChatButton } from "@/components/open-chat-button";
+import { Hero } from "@/components/hero";
 import { Section } from "@/components/section";
 import { SiteHeader } from "@/components/site-header";
 import { resume } from "@/lib/resume-data";
-
-function Hero() {
-  const focusAreas = resume.headline.split("|").map((s) => s.trim());
-  const [experience, ...areas] = focusAreas;
-
-  return (
-    <div
-      id="top"
-      className="relative overflow-hidden bg-accent-dark text-white"
-    >
-      <div
-        aria-hidden
-        className="pointer-events-none absolute -right-32 -top-32 h-96 w-96 rounded-full bg-accent opacity-40 blur-3xl"
-      />
-      <div className="relative mx-auto max-w-6xl px-5 pb-16 pt-16 sm:px-8 sm:pb-20 sm:pt-24">
-        <p className="text-sm font-semibold uppercase tracking-[0.2em] text-[#f1d9a6]">
-          {experience}
-        </p>
-        <h1 className="mt-3 font-serif text-5xl font-semibold leading-[1.05] sm:text-6xl lg:text-7xl">
-          {resume.name}
-        </h1>
-        <ul className="mt-6 flex flex-wrap gap-2" aria-label="Focus areas">
-          {areas.map((area) => (
-            <li
-              key={area}
-              className="rounded-full border border-white/25 bg-white/10 px-4 py-1.5 text-[0.95rem] font-medium"
-            >
-              {area}
-            </li>
-          ))}
-        </ul>
-        <p className="mt-8 max-w-2xl text-xl leading-relaxed text-white/90">
-          {resume.tagline}
-        </p>
-
-        <dl className="mt-8 grid max-w-2xl gap-x-8 gap-y-3 text-[0.98rem] sm:grid-cols-2">
-          <div>
-            <dt className="text-white/60">Location</dt>
-            <dd className="font-medium">{resume.location}</dd>
-          </div>
-          <div>
-            <dt className="text-white/60">Availability</dt>
-            <dd className="font-medium">{resume.availability}</dd>
-          </div>
-        </dl>
-
-        <div className="mt-8 flex flex-wrap gap-3">
-          <a
-            href={`mailto:${resume.contact.email}`}
-            className="rounded-full bg-white px-5 py-2.5 font-semibold text-accent-dark transition-colors hover:bg-[#f1d9a6]"
-          >
-            {resume.contact.email}
-          </a>
-          <a
-            href={`tel:${resume.contact.phone.replace(/\s/g, "")}`}
-            className="rounded-full border border-white/40 px-5 py-2.5 font-semibold text-white transition-colors hover:bg-white/10"
-          >
-            {resume.contact.phone}
-          </a>
-          <OpenChatButton className="rounded-full border border-[#f1d9a6]/60 px-5 py-2.5 font-semibold text-[#f1d9a6] transition-colors hover:bg-white/10" />
-        </div>
-      </div>
-
-      <div className="relative border-t border-white/15 bg-black/10">
-        <dl className="mx-auto grid max-w-6xl grid-cols-2 gap-px px-5 sm:px-8 lg:grid-cols-4">
-          {resume.keyStats.map((stat) => (
-            <div key={stat.label} className="py-6 lg:py-8">
-              <dt className="text-sm text-white/70">{stat.label}</dt>
-              <dd className="font-serif text-3xl font-semibold sm:text-4xl">
-                {stat.value}
-              </dd>
-            </div>
-          ))}
-        </dl>
-      </div>
-    </div>
-  );
-}
 
 function About() {
   return (
