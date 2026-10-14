@@ -19,18 +19,10 @@
   --color-marigold-deep: #9a5b05;
   --color-sky: #9cc1ff;
 
-  /* Legacy aliases, retired as components are restyled */
-  --color-background: #f4f6fa;
-  --color-foreground: #0b1220;
-  --color-accent: #2747b8;
-  --color-accent-dark: #0a1230;
-  --color-accent-soft: #e8edfb;
-  --color-gold: #9a5b05;
 
   --font-display: var(--font-bricolage), system-ui, sans-serif;
   --font-sans: var(--font-figtree), system-ui, sans-serif;
   --font-mono: var(--font-jetbrains), ui-monospace, monospace;
-  --font-serif: var(--font-bricolage), system-ui, sans-serif;
 }
 
 :root {
