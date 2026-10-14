@@ -32,17 +32,18 @@ internet later with no rework.
 
 - **Next.js** (App Router, latest stable), TypeScript.
 - Tailwind CSS for styling.
-- A single API route (`app/api/chat/route.ts`) that calls OpenRouter's
+- A single API route (`app/api/chat/route.ts`) that calls Groq's
   chat-completions endpoint server-side, so the API key never reaches the
-  browser.
-- Model: `nvidia/nemotron-3-ultra-550b-a55b:free` via OpenRouter
-  (`https://openrouter.ai/api/v1/chat/completions`).
-- `OPENROUTER_API_KEY` read from `.env` (already present, gitignored).
+  browser. Transient failures (429/5xx/network errors) are retried with
+  exponential backoff.
+- Model: `openai/gpt-oss-120b` via Groq
+  (`https://api.groq.com/openai/v1/chat/completions`).
+- `GROQ_API_KEY` read from `.env` (already present, gitignored).
 - The resume's structured content lives in a single local data file (e.g.
   `lib/resume-data.ts`) that both the page components and the chat API route
   import, so the chatbot's system prompt and the displayed content never
   drift apart.
-- No database, no auth, no external services beyond OpenRouter.
+- No database, no auth, no external services beyond Groq.
 
 ## Guardrails for the chatbot
 
@@ -59,7 +60,9 @@ internet later with no rework.
 ## Deploying later
 
 - Standard Next.js app; deployable as-is to Vercel or any Node host. Set
-  `OPENROUTER_API_KEY` as an environment variable on the host.
+  `GROQ_API_KEY` as an environment variable on the host. See README.md
+  "Deploying → Vercel" for the step-by-step dashboard/CLI flow, including the
+  `maxDuration` consideration for the chat route's retry budget.
 
 <!-- BEGIN:nextjs-agent-rules -->
 
