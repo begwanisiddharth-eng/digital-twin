@@ -13,6 +13,17 @@ const SUGGESTIONS = [
   "Is he open to remote roles?",
 ];
 
+/** Renders `**bold**` spans; everything else is left as plain text. */
+function renderInlineMarkdown(text: string) {
+  return text.split(/(\*\*[^*]+\*\*)/g).map((part, i) =>
+    part.startsWith("**") && part.endsWith("**") ? (
+      <strong key={i}>{part.slice(2, -2)}</strong>
+    ) : (
+      part
+    ),
+  );
+}
+
 const GREETING: Message = {
   role: "assistant",
   content:
@@ -173,7 +184,7 @@ export function ChatWidget() {
                   <span className="sr-only">
                     {m.role === "user" ? "You: " : "Digital twin: "}
                   </span>
-                  {m.content}
+                  {renderInlineMarkdown(m.content)}
                 </p>
               </div>
             ))}
