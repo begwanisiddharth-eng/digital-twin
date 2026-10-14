@@ -116,7 +116,7 @@ export function ChatWidget() {
         onClick={() => (open ? close() : setOpen(true))}
         aria-expanded={open}
         aria-controls="digital-twin-panel"
-        className="fixed bottom-5 right-5 z-40 flex items-center gap-2 rounded-full bg-accent-dark px-5 py-3.5 font-semibold text-white shadow-lg shadow-black/20 transition-colors hover:bg-accent sm:bottom-6 sm:right-6"
+        className="fixed bottom-5 right-5 z-40 flex items-center gap-2 rounded-full bg-marigold px-5 py-3.5 font-semibold text-night shadow-[0_12px_40px_-8px_rgba(10,18,48,0.55)] ring-1 ring-night/10 transition hover:-translate-y-0.5 hover:bg-[#ffb94a] sm:bottom-6 sm:right-6"
       >
         {open ? (
           <svg aria-hidden viewBox="0 0 24 24" className="h-5 w-5 fill-none stroke-current stroke-2">
@@ -140,22 +140,30 @@ export function ChatWidget() {
           aria-modal="false"
           aria-labelledby="digital-twin-title"
           onKeyDown={(e) => e.key === "Escape" && close()}
-          className="fixed inset-x-3 bottom-24 top-28 z-40 flex flex-col overflow-hidden rounded-2xl border border-line bg-surface shadow-2xl shadow-black/25 sm:inset-x-auto sm:right-6 sm:top-auto sm:h-[min(640px,calc(100vh-8rem))] sm:w-[400px]"
+          className="fixed inset-x-3 bottom-24 top-28 z-40 flex flex-col overflow-hidden rounded-3xl bg-surface shadow-[0_40px_100px_-20px_rgba(10,18,48,0.55)] ring-1 ring-night/10 sm:inset-x-auto sm:right-6 sm:top-auto sm:h-[min(660px,calc(100vh-8rem))] sm:w-[420px]"
         >
-          <header className="flex items-start justify-between gap-3 bg-accent-dark px-5 py-4 text-white">
-            <div>
-              <h2 id="digital-twin-title" className="font-serif text-lg font-semibold">
-                Siddharth&apos;s digital twin
-              </h2>
-              <p className="text-sm text-white/75">
-                Answers only from his resume
-              </p>
+          <header className="relative isolate flex items-center justify-between gap-3 overflow-hidden bg-night px-5 py-4 text-white">
+            <div aria-hidden className="night-grain absolute inset-0 -z-10" />
+            <div aria-hidden className="absolute -right-10 -top-16 -z-10 h-40 w-40 rounded-full bg-marigold/25 blur-2xl" />
+            <div className="flex items-center gap-3">
+              <span aria-hidden className="relative grid h-10 w-10 shrink-0 place-items-center rounded-full bg-marigold font-display text-sm font-extrabold text-night">
+                SB
+                <span className="absolute -bottom-0.5 -right-0.5 h-3 w-3 rounded-full bg-emerald-400 ring-2 ring-night" />
+              </span>
+              <div>
+                <h2 id="digital-twin-title" className="font-display text-lg font-bold tracking-tight">
+                  Siddharth&apos;s digital twin
+                </h2>
+                <p className="text-sm text-white/75">
+                  Answers only from his resume
+                </p>
+              </div>
             </div>
             <button
               type="button"
               onClick={close}
               aria-label="Close chat"
-              className="rounded-md p-1.5 text-white/80 hover:bg-white/10 hover:text-white"
+              className="rounded-full p-2 text-white/80 hover:bg-white/10 hover:text-white"
             >
               <svg aria-hidden viewBox="0 0 24 24" className="h-5 w-5 fill-none stroke-current stroke-2">
                 <path d="M6 6l12 12M18 6 6 18" strokeLinecap="round" />
@@ -165,7 +173,7 @@ export function ChatWidget() {
 
           <div
             ref={scrollRef}
-            className="flex-1 space-y-4 overflow-y-auto bg-background px-4 py-5"
+            className="flex-1 space-y-4 overflow-y-auto bg-paper px-4 py-5"
             aria-live="polite"
             aria-busy={loading}
           >
@@ -177,8 +185,8 @@ export function ChatWidget() {
                 <p
                   className={
                     m.role === "user"
-                      ? "max-w-[85%] whitespace-pre-wrap rounded-2xl rounded-br-sm bg-accent-dark px-4 py-2.5 text-[0.97rem] leading-relaxed text-white"
-                      : "max-w-[85%] whitespace-pre-wrap rounded-2xl rounded-bl-sm border border-line bg-surface px-4 py-2.5 text-[0.97rem] leading-relaxed text-ink"
+                      ? "max-w-[85%] whitespace-pre-wrap rounded-2xl rounded-br-md bg-lapis px-4 py-2.5 text-[1.02rem] leading-relaxed text-white"
+                      : "max-w-[88%] whitespace-pre-wrap rounded-2xl rounded-bl-md bg-surface px-4 py-2.5 text-[1.02rem] leading-relaxed text-ink shadow-sm ring-1 ring-line"
                   }
                 >
                   <span className="sr-only">
@@ -191,13 +199,13 @@ export function ChatWidget() {
 
             {loading && (
               <div className="flex justify-start">
-                <p className="flex items-center gap-1.5 rounded-2xl rounded-bl-sm border border-line bg-surface px-4 py-3">
+                <p className="flex items-center gap-1.5 rounded-2xl rounded-bl-md bg-surface px-4 py-3.5 shadow-sm ring-1 ring-line">
                   <span className="sr-only">Digital twin is typing…</span>
                   {[0, 150, 300].map((delay) => (
                     <span
                       key={delay}
                       aria-hidden
-                      className="h-2 w-2 animate-bounce rounded-full bg-accent"
+                      className="h-2 w-2 animate-bounce rounded-full bg-marigold"
                       style={{ animationDelay: `${delay}ms` }}
                     />
                   ))}
@@ -223,7 +231,7 @@ export function ChatWidget() {
                       <button
                         type="button"
                         onClick={() => send(s)}
-                        className="rounded-full border border-accent/30 bg-accent-soft px-3.5 py-1.5 text-left text-sm font-medium text-accent-dark hover:border-accent"
+                        className="rounded-2xl bg-surface px-3.5 py-2 text-left text-[0.95rem] font-medium text-lapis ring-1 ring-line transition hover:bg-lapis-soft hover:ring-lapis/40"
                       >
                         {s}
                       </button>
@@ -253,12 +261,12 @@ export function ChatWidget() {
                   }
                 }}
                 placeholder="Ask about his experience…"
-                className="max-h-32 min-h-[2.75rem] flex-1 resize-none rounded-xl border border-line bg-background px-3.5 py-2.5 text-[0.97rem] text-ink placeholder:text-muted/80 focus:border-accent focus:outline-none"
+                className="max-h-32 min-h-[2.75rem] flex-1 resize-none rounded-2xl border border-line bg-paper px-4 py-2.5 text-[1rem] text-ink placeholder:text-muted focus:border-lapis focus:outline-none"
               />
               <button
                 type="submit"
                 disabled={loading || !input.trim()}
-                className="h-11 rounded-xl bg-accent-dark px-4 font-semibold text-white transition-colors hover:bg-accent disabled:cursor-not-allowed disabled:opacity-50"
+                className="h-11 rounded-2xl bg-night px-5 font-semibold text-white transition-colors hover:bg-lapis disabled:cursor-not-allowed disabled:opacity-40"
               >
                 Send
               </button>
