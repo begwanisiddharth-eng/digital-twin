@@ -31,7 +31,7 @@ body {
 
 /* Offset in-page anchors so headings aren't hidden under the sticky header */
 section[id] {
-  scroll-margin-top: 5rem;
+  scroll-margin-top: 7.5rem;
 }
 
 :focus-visible {
@@ -49,5 +49,11 @@ section[id] {
   *::after {
     transition: none !important;
     animation: none !important;
+  }
+}
+
+@media (min-width: 64rem) {
+  section[id] {
+    scroll-margin-top: 5rem;
   }
 }

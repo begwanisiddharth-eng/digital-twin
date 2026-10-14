@@ -129,7 +129,7 @@ export function ChatWidget() {
           aria-modal="false"
           aria-labelledby="digital-twin-title"
           onKeyDown={(e) => e.key === "Escape" && close()}
-          className="fixed inset-x-3 bottom-24 top-20 z-40 flex flex-col overflow-hidden rounded-2xl border border-line bg-surface shadow-2xl shadow-black/25 sm:inset-x-auto sm:right-6 sm:top-auto sm:h-[min(640px,calc(100vh-8rem))] sm:w-[400px]"
+          className="fixed inset-x-3 bottom-24 top-28 z-40 flex flex-col overflow-hidden rounded-2xl border border-line bg-surface shadow-2xl shadow-black/25 sm:inset-x-auto sm:right-6 sm:top-auto sm:h-[min(640px,calc(100vh-8rem))] sm:w-[400px]"
         >
           <header className="flex items-start justify-between gap-3 bg-accent-dark px-5 py-4 text-white">
             <div>

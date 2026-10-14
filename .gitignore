@@ -42,3 +42,5 @@ next-env.d.ts
 
 # ralph loop state
 .claude/
+
+!.env.example

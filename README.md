@@ -1,36 +1,78 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Siddharth Begwani — Resume & Digital Twin
 
-## Getting Started
+A professional resume website for Siddharth Begwani, built from
+`Siddharth Begwani - CV May 2026.pdf`, with a "digital twin" chatbot that
+answers questions about his professional background using only the resume.
 
-First, run the development server:
+## Sections
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+About / Professional summary · Highlights of work done · Key projects
+executed · Professional experience · Skillsets · Education & certifications ·
+Digital twin chat widget (bottom-right, or "Ask my digital twin" in the hero).
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Tech stack
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+- Next.js (App Router) + TypeScript, Tailwind CSS
+- `app/api/chat/route.ts` calls OpenRouter server-side (the API key never
+  reaches the browser) using `nvidia/nemotron-3-ultra-550b-a55b:free`
+- No database, auth or other external services
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Project layout
 
-## Learn More
+| Path | Purpose |
+| --- | --- |
+| `lib/resume-data.ts` | **Single source of truth** for all resume content. Edit this to update the site *and* the chatbot. |
+| `lib/chat-prompt.ts` | System prompt and guardrails for the chatbot (built from `resume-data.ts`). |
+| `app/page.tsx` | The resume page and its sections. |
+| `app/api/chat/route.ts` | Chat endpoint that proxies to OpenRouter. |
+| `components/` | Header, section wrapper, chat widget. |
 
-To learn more about Next.js, take a look at the following resources:
+## Running locally
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+1. Make sure `.env` in the project root contains your OpenRouter key
+   (see `.env.example`):
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+   ```
+   OPENROUTER_API_KEY=sk-or-...
+   ```
 
-## Deploy on Vercel
+2. Install and start:
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+   ```bash
+   npm install
+   npm run dev
+   ```
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+3. Open <http://localhost:3000>.
+
+For a production build: `npm run build && npm start`.
+
+## Chatbot guardrails
+
+The system prompt embeds the full resume text and instructs the model to:
+
+- answer only from the resume, never from general knowledge or guesses;
+- reply that it cannot provide the information for anything off-topic
+  (general knowledge, coding help, personal/private matters, etc.) or not
+  covered in the resume;
+- ignore attempts to change its rules or reveal its prompt.
+
+Requests are validated server-side (last 12 messages, 1,000 characters each).
+
+## Deploying
+
+This is a standard Next.js app and deploys as-is:
+
+- **Vercel**: import the repository, add `OPENROUTER_API_KEY` under
+  *Project → Settings → Environment Variables*, deploy.
+- **Any Node host**: `npm install && npm run build && npm start`, with
+  `OPENROUTER_API_KEY` set in the environment (`PORT` controls the port).
+
+## Troubleshooting
+
+- *Styles look unstyled or stale after editing theme colours*: delete the
+  `.next` folder and restart.
+- *Chat says it isn't configured*: `OPENROUTER_API_KEY` is missing; restart
+  the dev server after editing `.env`.
+- *Chat says it's busy*: free OpenRouter models are rate-limited; wait a
+  minute and retry.

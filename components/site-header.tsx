@@ -46,6 +46,20 @@ export function SiteHeader() {
           Get in touch
         </a>
       </div>
+      <nav aria-label="Sections" className="border-t border-line/80 lg:hidden">
+        <ul className="mx-auto flex max-w-6xl gap-1 overflow-x-auto px-3 py-1.5 text-[0.95rem] [scrollbar-width:none] sm:px-6">
+          {navItems.map((item) => (
+            <li key={item.href} className="shrink-0">
+              <a
+                href={item.href}
+                className="block rounded-md px-3 py-1.5 text-muted hover:bg-accent-soft hover:text-accent-dark"
+              >
+                {item.label}
+              </a>
+            </li>
+          ))}
+        </ul>
+      </nav>
     </header>
   );
 }
