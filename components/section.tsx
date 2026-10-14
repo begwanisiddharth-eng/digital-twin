@@ -34,7 +34,7 @@ export function Section({
         <header data-reveal className="mb-12 grid gap-6 sm:mb-16 lg:grid-cols-[1.1fr_1fr] lg:items-end">
           <div>
             <p
-              className={`flex items-center gap-3 font-mono text-xs font-medium uppercase tracking-[0.22em] sm:text-sm ${
+              className={`flex items-center gap-3 font-mono text-sm font-medium uppercase tracking-[0.2em] ${
                 dark ? "text-marigold" : "text-marigold-deep"
               }`}
             >

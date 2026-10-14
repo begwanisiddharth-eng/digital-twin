@@ -17,7 +17,7 @@ export function Hero() {
       />
 
       <div className="mx-auto max-w-6xl px-5 pb-14 pt-14 sm:px-8 sm:pt-20 lg:pb-16 lg:pt-24">
-        <p style={{ "--i": 0 } as CSSProperties} className="rise font-mono text-xs uppercase tracking-[0.22em] text-marigold sm:text-sm">
+        <p style={{ "--i": 0 } as CSSProperties} className="rise font-mono text-sm uppercase tracking-[0.2em] text-marigold">
           {resume.location} · {resume.availability}
         </p>
 

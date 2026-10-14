@@ -12,7 +12,7 @@ export const navItems = [
 
 export function SiteHeader() {
   return (
-    <header className="sticky top-0 z-30 border-b border-white/10 bg-night/85 text-white backdrop-blur-xl">
+    <header className="sticky top-0 z-30 border-b border-white/10 bg-night/95 text-white backdrop-blur-xl">
       <a
         href="#main"
         className="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-3 focus:rounded focus:bg-marigold focus:px-3 focus:py-2 focus:text-night"

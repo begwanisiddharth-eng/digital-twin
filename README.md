@@ -25,7 +25,10 @@ Digital twin chat widget (bottom-right, or "Ask my digital twin" in the hero).
 | `lib/chat-prompt.ts` | System prompt and guardrails for the chatbot (built from `resume-data.ts`). |
 | `app/page.tsx` | The resume page and its sections. |
 | `app/api/chat/route.ts` | Chat endpoint that proxies to OpenRouter. |
-| `components/` | Header, section wrapper, chat widget. |
+| `components/hero.tsx`, `sun-band.tsx` | Hero with the live "follow-the-sun" time-zone band. |
+| `components/sections-main.tsx`, `sections-more.tsx` | About, Highlights, Projects, Experience, Skills, Education, footer. |
+| `components/chat-widget.tsx` | The digital twin chat panel. |
+| `app/globals.css` | Colour/type tokens and motion (all motion respects reduced-motion). |
 
 ## Running locally
 

@@ -19,7 +19,7 @@ export function About() {
           </p>
         </div>
 
-        <aside data-reveal style={{ "--d": 2 } as CSSProperties} className="relative overflow-hidden rounded-3xl bg-night p-7 text-white sm:p-8">
+        <div data-reveal style={{ "--d": 2 } as CSSProperties} className="relative overflow-hidden rounded-3xl bg-night p-7 text-white sm:p-8">
           <div
             aria-hidden
             className="absolute -right-24 -top-24 h-64 w-64 rounded-full bg-lapis/50 blur-3xl"
@@ -40,7 +40,7 @@ export function About() {
               </div>
             ))}
           </dl>
-        </aside>
+        </div>
       </div>
     </Section>
   );
@@ -131,7 +131,7 @@ export function Projects() {
             </div>
             <div>
               <dt className="text-sm text-white/65">Value</dt>
-              <dd className="mt-1 font-display text-4xl font-bold text-marigold">
+              <dd className="mt-1 whitespace-nowrap font-display text-3xl font-bold text-marigold sm:text-4xl">
                 {featured.value}
               </dd>
             </div>

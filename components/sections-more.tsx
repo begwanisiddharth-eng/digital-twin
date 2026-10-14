@@ -74,15 +74,10 @@ export function Education() {
           <li
             key={e.qualification}
             data-reveal
+            data-year={e.year}
             style={{ "--d": i % 2 } as CSSProperties}
-            className="group relative overflow-hidden rounded-3xl bg-paper p-7 ring-1 ring-line transition hover:ring-lapis/30"
+            className="group relative overflow-hidden rounded-3xl bg-paper p-7 ring-1 ring-line transition before:pointer-events-none before:absolute before:-right-2 before:-top-6 before:font-display before:text-[6.5rem] before:font-extrabold before:leading-none before:tracking-tighter before:text-lapis/[0.07] before:transition before:content-[attr(data-year)] hover:ring-lapis/30 hover:before:text-lapis/[0.12]"
           >
-            <span
-              aria-hidden
-              className="pointer-events-none absolute -right-2 -top-6 font-display text-[6.5rem] font-extrabold leading-none tracking-tighter text-lapis/[0.07] transition group-hover:text-lapis/[0.12]"
-            >
-              {e.year}
-            </span>
             <p className="font-mono text-sm font-medium text-lapis">{e.year}</p>
             <p className="relative mt-3 font-display text-xl font-bold leading-snug tracking-tight text-ink">
               {e.qualification}

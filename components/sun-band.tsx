@@ -47,7 +47,7 @@ export function SunBand() {
 
   return (
     <div>
-      <p className="font-mono text-xs uppercase tracking-[0.22em] text-sky">
+      <p className="font-mono text-sm uppercase tracking-[0.2em] text-sky">
         Delivered remotely across time zones, from Kolkata
       </p>
       <ol className="relative mt-5 grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-5 lg:gap-0">
@@ -61,7 +61,7 @@ export function SunBand() {
           return (
             <li
               key={z.tz}
-              className={`relative rounded-xl border p-4 lg:rounded-none lg:border-0 lg:px-4 lg:py-0 ${
+              className={`relative rounded-xl border p-4 last:col-span-2 sm:last:col-span-1 lg:rounded-none lg:border-0 lg:px-4 lg:py-0 ${
                 z.home
                   ? "border-marigold/40 bg-marigold/10 lg:bg-transparent"
                   : "border-white/10 bg-white/[0.03] lg:bg-transparent"
@@ -75,7 +75,7 @@ export function SunBand() {
                     : "bg-sky shadow-[0_0_14px_2px_rgba(156,193,255,0.35)]"
                 }`}
               />
-              <p className="text-sm font-semibold text-white">
+              <p className="text-base font-semibold text-white">
                 {z.label}
                 {z.home && (
                   <span className="ml-2 rounded-full bg-marigold px-2 py-0.5 text-[0.7rem] font-bold uppercase tracking-wider text-night">
@@ -86,7 +86,7 @@ export function SunBand() {
               <p className="mt-1 font-mono text-2xl font-medium tabular-nums text-white sm:text-3xl">
                 <time suppressHydrationWarning>{now?.time ?? "--:--"}</time>
               </p>
-              <p className="mt-1 text-sm leading-snug text-white/70">
+              <p className="mt-1 text-[0.95rem] leading-snug text-white/75">
                 {z.clients}
               </p>
             </li>
