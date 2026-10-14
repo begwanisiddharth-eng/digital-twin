@@ -31,7 +31,7 @@ export function Section({
       className={`relative py-20 sm:py-28 ${tones[tone]}`}
     >
       <div className="mx-auto max-w-6xl px-5 sm:px-8">
-        <header className="mb-12 grid gap-6 sm:mb-16 lg:grid-cols-[1.1fr_1fr] lg:items-end">
+        <header data-reveal className="mb-12 grid gap-6 sm:mb-16 lg:grid-cols-[1.1fr_1fr] lg:items-end">
           <div>
             <p
               className={`flex items-center gap-3 font-mono text-xs font-medium uppercase tracking-[0.22em] sm:text-sm ${

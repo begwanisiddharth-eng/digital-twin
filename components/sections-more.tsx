@@ -1,3 +1,4 @@
+import type { CSSProperties } from "react";
 import { OpenChatButton } from "@/components/open-chat-button";
 import { Figures, Section } from "@/components/section";
 import { resume } from "@/lib/resume-data";
@@ -15,9 +16,11 @@ export function Skills() {
         <div>
           <h3 className="font-display text-2xl font-bold tracking-tight">Core competencies</h3>
           <ul className="mt-6 grid gap-3 sm:grid-cols-2 lg:grid-cols-1 xl:grid-cols-2">
-            {resume.coreCompetencies.map((c) => (
+            {resume.coreCompetencies.map((c, i) => (
               <li
                 key={c}
+                data-reveal
+                style={{ "--d": i % 4 } as CSSProperties}
                 className="flex items-start gap-3 rounded-2xl border border-white/10 bg-white/[0.04] px-4 py-3.5 leading-snug transition hover:border-marigold/50 hover:bg-white/[0.07]"
               >
                 <span aria-hidden className="mt-2 h-2 w-2 shrink-0 rotate-45 bg-marigold" />
@@ -29,7 +32,7 @@ export function Skills() {
 
         <div>
           <h3 className="font-display text-2xl font-bold tracking-tight">Technical skills</h3>
-          <dl className="mt-6 divide-y divide-white/10 rounded-3xl border border-white/10 bg-white/[0.03]">
+          <dl data-reveal className="mt-6 divide-y divide-white/10 rounded-3xl border border-white/10 bg-white/[0.03]">
             {resume.technicalSkills.map((s) => (
               <div key={s.category} className="grid gap-3 p-5 sm:grid-cols-[9.5rem_1fr] sm:gap-5 sm:p-6">
                 <dt className="font-mono text-sm uppercase tracking-[0.14em] text-marigold sm:pt-1.5">
@@ -67,9 +70,11 @@ export function Education() {
     >
       <h3 className="sr-only">Education</h3>
       <ul className="grid gap-5 sm:grid-cols-2">
-        {resume.education.map((e) => (
+        {resume.education.map((e, i) => (
           <li
             key={e.qualification}
+            data-reveal
+            style={{ "--d": i % 2 } as CSSProperties}
             className="group relative overflow-hidden rounded-3xl bg-paper p-7 ring-1 ring-line transition hover:ring-lapis/30"
           >
             <span
@@ -87,7 +92,7 @@ export function Education() {
         ))}
       </ul>
 
-      <div className="mt-16">
+      <div data-reveal className="mt-16">
         <h3 className="font-display text-2xl font-bold tracking-tight text-ink sm:text-3xl">
           Certifications & professional development
         </h3>

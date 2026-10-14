@@ -1,3 +1,4 @@
+import { NavLinks } from "@/components/nav-links";
 import { resume } from "@/lib/resume-data";
 
 export const navItems = [
@@ -26,18 +27,7 @@ export function SiteHeader() {
           {resume.name}
         </a>
         <nav aria-label="Sections" className="hidden lg:block">
-          <ul className="flex items-center gap-1 text-[0.95rem]">
-            {navItems.map((item) => (
-              <li key={item.href}>
-                <a
-                  href={item.href}
-                  className="rounded-full px-3.5 py-2 text-white/75 transition-colors hover:bg-white/10 hover:text-white"
-                >
-                  {item.label}
-                </a>
-              </li>
-            ))}
-          </ul>
+          <NavLinks items={navItems} />
         </nav>
         <a
           href={`mailto:${resume.contact.email}`}
@@ -47,18 +37,7 @@ export function SiteHeader() {
         </a>
       </div>
       <nav aria-label="Sections" className="border-t border-white/10 lg:hidden">
-        <ul className="mx-auto flex max-w-6xl gap-1 overflow-x-auto px-3 py-1.5 text-[0.95rem] [scrollbar-width:none] sm:px-6">
-          {navItems.map((item) => (
-            <li key={item.href} className="shrink-0">
-              <a
-                href={item.href}
-                className="block rounded-full px-3 py-1.5 text-white/75 hover:bg-white/10 hover:text-white"
-              >
-                {item.label}
-              </a>
-            </li>
-          ))}
-        </ul>
+        <NavLinks items={navItems} compact />
       </nav>
     </header>
   );

@@ -10,7 +10,7 @@ export function About() {
   return (
     <Section id="about" eyebrow="About me" title="Professional summary" tone="surface">
       <div className="grid gap-12 lg:grid-cols-[1.55fr_1fr]">
-        <div>
+        <div data-reveal>
           <p className="font-display text-[clamp(1.5rem,2.6vw,2rem)] font-semibold leading-snug tracking-[-0.015em] text-ink">
             {lead}
           </p>
@@ -19,7 +19,7 @@ export function About() {
           </p>
         </div>
 
-        <aside className="relative overflow-hidden rounded-3xl bg-night p-7 text-white sm:p-8">
+        <aside data-reveal style={{ "--d": 2 } as CSSProperties} className="relative overflow-hidden rounded-3xl bg-night p-7 text-white sm:p-8">
           <div
             aria-hidden
             className="absolute -right-24 -top-24 h-64 w-64 rounded-full bg-lapis/50 blur-3xl"
@@ -58,6 +58,8 @@ export function Highlights() {
         {resume.highlights.map((group, gi) => (
           <article
             key={group.title}
+            data-reveal
+            style={{ "--d": gi } as CSSProperties}
             className={`rounded-3xl p-7 sm:p-10 ${
               gi === 0
                 ? "bg-surface ring-1 ring-line"
@@ -104,7 +106,7 @@ export function Projects() {
       tone="surface"
     >
       {/* Most recent engagement, given the full width */}
-      <article className="relative overflow-hidden rounded-3xl bg-night p-7 text-white sm:p-10">
+      <article data-reveal className="relative overflow-hidden rounded-3xl bg-night p-7 text-white sm:p-10">
         <div
           aria-hidden
           className="absolute -bottom-40 -right-20 h-96 w-96 rounded-full bg-marigold/25 blur-3xl"
@@ -138,9 +140,11 @@ export function Projects() {
       </article>
 
       <ul className="mt-6 grid gap-6 md:grid-cols-2">
-        {others.map((p) => (
+        {others.map((p, i) => (
           <li
             key={p.client}
+            data-reveal
+            style={{ "--d": i % 2 } as CSSProperties}
             className="group flex flex-col rounded-3xl bg-paper p-7 ring-1 ring-line transition duration-300 hover:-translate-y-1 hover:bg-surface hover:shadow-[0_24px_60px_-28px_rgba(10,18,48,0.35)] hover:ring-lapis/30 sm:p-8"
           >
             <div className="flex flex-wrap items-center justify-between gap-2">
@@ -185,7 +189,7 @@ export function Experience() {
       title="Career journey"
       intro="Two decades at Cognizant, from Consultant to Director, after a start in management consulting and software development."
     >
-      <article className="rounded-3xl bg-surface p-7 ring-1 ring-line sm:p-10">
+      <article data-reveal className="rounded-3xl bg-surface p-7 ring-1 ring-line sm:p-10">
         <div className="flex flex-wrap items-baseline justify-between gap-3">
           <h3 className="font-display text-3xl font-bold tracking-tight text-ink sm:text-4xl">
             {cognizant.company}
@@ -201,7 +205,8 @@ export function Experience() {
             return (
               <li
                 key={step}
-                style={{ "--h": `${5 + i * 2.25}rem` } as CSSProperties}
+                data-reveal="grow"
+                style={{ "--h": `${5 + i * 2.25}rem`, "--d": i + 1 } as CSSProperties}
                 className={`flex flex-col justify-end rounded-2xl p-4 sm:h-[var(--h)] ${
                   last
                     ? "bg-night text-white"
@@ -238,9 +243,11 @@ export function Experience() {
       </article>
 
       <ol className="mt-6 grid gap-6 md:grid-cols-2">
-        {earlier.map((job) => (
+        {earlier.map((job, i) => (
           <li
             key={`${job.company}-${job.period}`}
+            data-reveal
+            style={{ "--d": i } as CSSProperties}
             className="rounded-3xl bg-surface p-7 ring-1 ring-line sm:p-8"
           >
             <p className="font-mono text-sm text-muted">{job.period}</p>

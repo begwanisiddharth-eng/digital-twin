@@ -71,7 +71,7 @@ export function SunBand() {
                 aria-hidden
                 className={`relative z-10 mb-3 block h-3 w-3 rounded-full ring-4 ring-night lg:mt-3 ${
                   now?.daylight
-                    ? "bg-marigold shadow-[0_0_18px_4px_rgba(244,166,42,0.55)]"
+                    ? "pulse-sun bg-marigold shadow-[0_0_18px_4px_rgba(244,166,42,0.55)]"
                     : "bg-sky shadow-[0_0_14px_2px_rgba(156,193,255,0.35)]"
                 }`}
               />

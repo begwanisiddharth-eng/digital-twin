@@ -80,3 +80,71 @@ section[id] {
     animation: none !important;
   }
 }
+
+/* ---------- Motion (all of it opts out under prefers-reduced-motion) ---------- */
+@media (prefers-reduced-motion: no-preference) {
+  /* Hero load sequence: elements rise in, staggered by --i */
+  .rise {
+    animation: rise 0.9s cubic-bezier(0.2, 0.7, 0.2, 1) both;
+    animation-delay: calc(var(--i, 0) * 110ms + 80ms);
+  }
+  .dawn {
+    animation: dawn 2.4s cubic-bezier(0.2, 0.7, 0.2, 1) both;
+  }
+  .pulse-sun {
+    animation: pulse-sun 3.2s ease-in-out infinite;
+  }
+
+  /* Scroll reveals: only hidden once JS has armed them (html.reveal-on) */
+  .reveal-on [data-reveal] {
+    transition:
+      opacity 0.8s cubic-bezier(0.2, 0.7, 0.2, 1),
+      transform 0.8s cubic-bezier(0.2, 0.7, 0.2, 1);
+    transition-delay: calc(var(--d, 0) * 90ms);
+  }
+  .reveal-on [data-reveal]:not(.is-visible) {
+    opacity: 0;
+    transform: translateY(28px);
+  }
+  /* Promotion staircase grows up from its baseline */
+  .reveal-on [data-reveal="grow"] {
+    transform-origin: bottom;
+  }
+  .reveal-on [data-reveal="grow"]:not(.is-visible) {
+    transform: scaleY(0.35);
+  }
+}
+
+@keyframes rise {
+  from {
+    opacity: 0;
+    transform: translateY(26px);
+    filter: blur(6px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+    filter: none;
+  }
+}
+
+@keyframes dawn {
+  from {
+    opacity: 0;
+    transform: translateY(8rem);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes pulse-sun {
+  0%,
+  100% {
+    box-shadow: 0 0 14px 3px rgb(244 166 42 / 0.45);
+  }
+  50% {
+    box-shadow: 0 0 26px 8px rgb(244 166 42 / 0.7);
+  }
+}
